@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../auth/auth.service';
-import { UserLogin } from '../models/user-login.model';
-import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../auth.service';
+import { UserLogin } from '../../models/user-login.model';
+import { ApplicationConfig } from '@angular/core';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule]
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginData).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-          // e.g., store JWT, navigate, etc.
+       
         },
         error: (error) => {
           console.error('Login error:', error);
@@ -40,3 +41,7 @@ export class LoginComponent implements OnInit {
     }
   }
 }
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideHttpClient(withFetch())]
+};
