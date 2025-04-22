@@ -28,11 +28,9 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const loginData: UserLogin = this.loginForm.value;
-
       this.authService.login(loginData).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-       
         },
         error: (error) => {
           console.error('Login error:', error);
