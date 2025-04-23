@@ -8,8 +8,8 @@ import { usersignup } from '../models/user-signup.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:3000/api/auth/login'; 
-  private signupUrl = 'http://localhost:3000/feed/signup'; // Adjust to your backend route
+  private loginUrl = 'http://localhost:8080/feed/login'; 
+  private signupUrl = 'http://localhost:8080/feed/signup';
   public loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
@@ -28,8 +28,21 @@ export class AuthService {
   }
 
   signup(user: usersignup): Observable<any> {
-    return this.http.post(this.signupUrl, user).pipe(
-     
+    // Ensure only username and password are sent
+    const payload = {
+      username: user.username,
+      password: user.password
+    };
+    return this.http.post(this.signupUrl, payload).pipe(
+      tap((response: any) => {
+       
+        if (response.token) {
+          localStorage.setItem('auth_token', response.token);
+          localStorage.setItem('username', response.user?.username); 
+          localStorage.setItem('userId', response.user?.userId);     
+          this.loggedIn.next(true);
+        }
+      })
     );
   }
 }

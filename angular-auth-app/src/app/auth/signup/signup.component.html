@@ -1,20 +1,13 @@
 <h2>Sign Up</h2>
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-  <label>
-    Name:
-    <input type="text" formControlName="name" />
-  </label>
-  <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
-    Name is required.
-  </div>
+ 
 
-  <br />
 
   <label>
     Email:
-    <input type="email" formControlName="email" />
+    <input type="username" formControlName="username" />
   </label>
-  <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+  <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
     Enter a valid email.
   </div>
 
