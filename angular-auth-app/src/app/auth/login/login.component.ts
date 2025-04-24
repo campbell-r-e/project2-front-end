@@ -15,6 +15,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  router: any;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginData).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
+          this.router.navigate(['/logbook']);
         },
         error: (error) => {
           console.error('Login error:', error);

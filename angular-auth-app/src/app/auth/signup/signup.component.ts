@@ -15,6 +15,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
+  router: any;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -31,7 +32,7 @@ export class SignupComponent implements OnInit {
       this.authService.signup(signupData).subscribe({
         next: (response: any) => {
           console.log('Signup successful:', response);
-          // Optionally redirect or show a message
+          this.router.navigate(['/login']);
         },
         error: (error) => {
           console.error('Signup error:', error);
