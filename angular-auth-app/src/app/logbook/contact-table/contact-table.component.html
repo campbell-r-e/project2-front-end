@@ -1,1 +1,47 @@
-<p>contact-table works!</p>
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Call</th>
+        <th>Date</th>
+        <th>Time On</th>
+        <th>Time Off</th>
+        <th>Band</th>
+        <th>Mode</th>
+        <th>Freq</th>
+        <th>RST Sent</th>
+        <th>RST Rcvd</th>
+        <th>Country</th>
+        <th>Grid</th>
+        <th>Power</th>
+        <th>QSL Sent</th>
+        <th>QSL Rcvd</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of logbookEntries()">
+        <td>{{ entry.call }}</td>
+        <td>{{ entry.qso_date }}</td>
+        <td>{{ entry.time_on }}</td>
+        <td>{{ entry.time_off || '-' }}</td>
+        <td>{{ entry.band }}</td>
+        <td>{{ entry.mode }}</td>
+        <td>{{ entry.freq || '-' }}</td>
+        <td>{{ entry.rst_sent }}</td>
+        <td>{{ entry.rst_rcvd }}</td>
+        <td>{{ entry.country || '-' }}</td>
+        <td>{{ entry.gridsquare || '-' }}</td>
+        <td>{{ entry.tx_pwr || '-' }}</td>
+        <td>{{ entry.qsl_sent || '-' }}</td>
+        <td>{{ entry.qsl_rcvd || '-' }}</td>
+        <td>{{ entry.createdAt ? (entry.createdAt | date:'short') : '-' }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteEntry(entry)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

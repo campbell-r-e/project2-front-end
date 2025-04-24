@@ -1,0 +1,46 @@
+let date= new Date();
+export interface Logbook {
+  id: string;
+  call: string;
+  qso_date: string;
+  time_on: string;
+  band: string;
+  mode: string;
+  rst_sent: string;
+  rst_rcvd: string;
+  freq?: number;
+  freq_rx?: number;
+  qsl_rcvd?: 'Y' | 'N' | 'R';
+  qsl_sent?: 'Y' | 'N' | 'R';
+
+  station_callsign?: string;
+  my_gridsquare?: string;
+  gridsquare?: string;
+  tx_pwr?: string;
+  operator?: string;
+  my_sig?: string;
+  my_sig_info?: string;
+  sig?: string;
+  sig_info?: string;
+  qsl_via?: string;
+  contest_id?: string;
+  ituz?: number;
+  cqz?: number;
+  dxcc?: number;
+  country?: string;
+  eqsl_qsl_rcvd?: 'Y' | 'N' | 'R';
+  eqsl_qsl_sent?: 'Y' | 'N' | 'R';
+  lotw_qsl_rcvd?: 'Y' | 'N' | 'R';
+  lotw_qsl_sent?: 'Y' | 'N' | 'R';
+  comment?: string;
+  qsl_rcvd_date?: string;
+  qsl_sent_date?: string;
+  time_off?: string;
+  prop_mode?: string;
+  sat_name?: string;
+  sat_mode?: string;
+  rx_pwr?: string;
+  ant_az?: number;
+  ant_el?: number;
+  createdAt?: Date;
+}
