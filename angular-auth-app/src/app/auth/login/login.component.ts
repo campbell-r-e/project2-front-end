@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ApplicationConfig, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { UserLogin } from '../../models/user-login.model';
-import { ApplicationConfig } from '@angular/core';
+import { Router } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @Component({
@@ -15,9 +15,12 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  router: any;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
