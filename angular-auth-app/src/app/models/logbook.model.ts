@@ -1,6 +1,6 @@
 let date= new Date();
 export interface Logbook {
-  id: string;
+  _id: string;
   call: string;
   qso_date: string;
   time_on: string;

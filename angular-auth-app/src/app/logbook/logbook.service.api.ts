@@ -15,11 +15,7 @@ export class Logbookservice{
     return this.http.get<Logbook[]>(this.contactUrl);
   }
 
-
-
-
-  deleteEntry(id:String): Observable<any> {
-   
-    return this.http.delete(`/api/logbook/:${id}`);
+  deleteEntry(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.contactUrl}/${id}`);
   }
 }

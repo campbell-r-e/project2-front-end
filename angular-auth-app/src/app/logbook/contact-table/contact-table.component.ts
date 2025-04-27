@@ -27,10 +27,10 @@ export class ContactTableComponent implements OnInit {
   deleteEntry(entry: Logbook): void {
    
     this.logbookEntries.set(
-      this.logbookEntries().filter(e => e.id !== entry.id)
+      this.logbookEntries().filter(e => e._id !== entry._id)
     );
     
   
-    this.logbookservice.deleteEntry(entry.id).subscribe();
+    this.logbookservice.deleteEntry(entry._id).subscribe();
   }
 }
