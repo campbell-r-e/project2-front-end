@@ -1,6 +1,5 @@
-<nav>
-  <button routerLink="/">Home</button> |
-  <button routerLink="/login">Login</button>
-  <button routerLink="/signup">Sign Up</button>
+<nav *ngIf="isHomePage()">
+  <button (click)="goToLogin()">Login</button>
+  <button (click)="goToSignup()">Sign Up</button>
 </nav>
 <router-outlet></router-outlet>

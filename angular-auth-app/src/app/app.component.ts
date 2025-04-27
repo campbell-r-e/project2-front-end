@@ -1,22 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'angular-auth-app';
 
+  constructor(private router: Router) {}
 
-constructor(private router: Router) {}
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+  goToSignup() {
+    this.router.navigate(['/signup']);
+  }
 
-goToLogin() {
-  this.router.navigate(['/login']);
-}
-goToSignup() {
-  this.router.navigate(['/signup']);
-}
+  isHomePage(): boolean {
+    return this.router.url === '/' || this.router.url === '';
+  }
 }
